@@ -3,7 +3,7 @@ const hbs = require('hbs');
 const fs = require('fs');
 var app = express();
 
-
+const port = process.env.PORT || 3000;
 hbs.registerPartials(__dirname+'/views/partials');
 //sets view engine and res.render(component, paramas)
 hbs.registerHelper('getCurrentYear', () => {
@@ -55,4 +55,6 @@ app.get('/bad', (req,res) => {
     })
 })
 
-app.listen(3000);
+app.listen(`${port}`,() => {
+    console.log('Server running on '+ port);
+});
